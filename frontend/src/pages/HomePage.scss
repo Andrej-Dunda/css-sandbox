@@ -1,13 +1,14 @@
 .homepage {
-  width: 100vw;
-  height: 100vh;
+  .main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
 
-  display: flex;
-  flex-direction: row;
-  gap: 32px;
+    justify-content: center;
+    align-items: center;
 
-  justify-content: center;
-  align-items: center;
+    padding: 32px;
+  }
 
   .color-inputs {
     display: flex;
@@ -16,16 +17,11 @@
     justify-content: space-between;
     align-items: center;
 
-    padding: 32px;
-
-    box-shadow: 1px 1px 16px 5px rgba(0, 0, 0, 0.31);
-    -webkit-box-shadow: 1px 1px 16px 5px rgba(0, 0, 0, 0.31);
-    -moz-box-shadow: 1px 1px 16px 5px rgba(0, 0, 0, 0.31);
-
-    border: 1px solid black;
-    border-radius: 4px;
+    width: 100%;
 
     .color-input-wrapper {
+      width: 100%;
+      
       display: flex;
       flex-direction: column;
       gap: 4px;
@@ -44,7 +40,7 @@
         border: 1px solid black;
         border-radius: 8px;
 
-        width: 300px;
+        width: 100%;
         box-sizing: border-box;
 
         font-size: 16px;
@@ -80,7 +76,7 @@
       font-weight: 600;
       color: white;
       font-size: 16px;
-      width: 300px;
+      width: 100%;
 
       &:hover {
         background-color: #202020;

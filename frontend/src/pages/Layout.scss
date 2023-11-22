@@ -1,4 +1,18 @@
 .layout {
   width: 100vw;
   height: 100vh;
+
+  display: grid;
+  grid-template-rows: 54px 1fr;
+
+  .page-container {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+
+    transition: all var(--aside-menu-transition-duration);
+
+    &.aside-menu-open {
+      grid-template-columns: 50px 1fr;
+    }
+  }
 }

@@ -13,8 +13,8 @@ const ToggleButton = ({primaryColor, secondaryColor}: iToggleButton) => {
   useEffect(() => {
     isValidColor(primaryColor) && toggleButtonRef.current && toggleButtonRef.current.style.setProperty('--toggle-primary', primaryColor)
     isValidColor(secondaryColor) && toggleButtonRef.current && toggleButtonRef.current.style.setProperty('--toggle-secondary', secondaryColor)
-    console.log(isValidColor(primaryColor))
-    console.log(isValidColor(secondaryColor))
+    if (!isValidColor(primaryColor)) console.log(`${primaryColor} is not a valid color!`)
+    if (!isValidColor(secondaryColor)) console.log(`${secondaryColor} is not a valid color!`)
   }, [primaryColor, secondaryColor])
 
   const isValidColor = (color: string): boolean => {

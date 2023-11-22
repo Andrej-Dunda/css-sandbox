@@ -1,5 +1,7 @@
 .toggle-button {
-  --transition-time: 0.15s;
+  --toggle-primary: white;
+  --toggle-secondary: black;
+  --toggle-transition-time: 0.15s;
 
   position: relative;
   box-sizing: border-box;
@@ -17,7 +19,7 @@
 
   cursor: pointer;
 
-  transition: all var(--transition-time);
+  transition: all var(--toggle-transition-time);
 
   color: var(--toggle-secondary);
 
@@ -40,7 +42,7 @@
     position: absolute;
     box-sizing: border-box;
 
-    transition: all var(--transition-time);
+    transition: all var(--toggle-transition-time);
 
     z-index: 0;
 
