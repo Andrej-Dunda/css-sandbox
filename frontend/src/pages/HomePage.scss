@@ -1,0 +1,93 @@
+.homepage {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+
+  justify-content: center;
+  align-items: center;
+
+  .color-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 32px;
+
+    box-shadow: 1px 1px 16px 5px rgba(0, 0, 0, 0.31);
+    -webkit-box-shadow: 1px 1px 16px 5px rgba(0, 0, 0, 0.31);
+    -moz-box-shadow: 1px 1px 16px 5px rgba(0, 0, 0, 0.31);
+
+    border: 1px solid black;
+    border-radius: 4px;
+
+    .color-input-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+
+      label {
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 600;
+
+        -webkit-user-select: none; /* Safari */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+        user-select: none;
+      }
+
+      .color-input {
+        padding: 16px;
+        border: 1px solid black;
+        border-radius: 8px;
+
+        width: 300px;
+        box-sizing: border-box;
+
+        font-size: 16px;
+      }
+    }
+
+    .swap-colors-wrapper {
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+
+      .swap-colors-label {
+        cursor: pointer;
+
+        -webkit-user-select: none; /* Safari */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+        user-select: none;
+      }
+
+      .swap-colors-icon {
+        cursor: pointer;
+      }
+    }
+
+    .submit-new-colors-button {
+      background-color: black;
+      border: none;
+      border-radius: 8px;
+      padding: 16px;
+      font-weight: 600;
+      color: white;
+      font-size: 16px;
+      width: 300px;
+
+      &:hover {
+        background-color: #202020;
+        box-shadow: 0px 0px 11px -4px rgba(0, 0, 0, 0.75);
+        -webkit-box-shadow: 0px 0px 11px -4px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 0px 0px 11px -4px rgba(0, 0, 0, 0.75);
+      }
+    }
+  }
+}
