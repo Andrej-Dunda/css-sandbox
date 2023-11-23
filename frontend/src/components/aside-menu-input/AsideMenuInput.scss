@@ -1,0 +1,27 @@
+.aside-menu-input {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  .aside-menu-label {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
+  }
+
+  .aside-menu-input-element {
+    padding: 16px;
+    border: 1px solid black;
+    border-radius: 8px;
+
+    width: 100%;
+    box-sizing: border-box;
+
+    font-size: 16px;
+  }
+}
