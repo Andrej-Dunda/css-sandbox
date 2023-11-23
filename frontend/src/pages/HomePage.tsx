@@ -2,8 +2,9 @@ import { ChangeEvent, useState } from 'react';
 import ToggleButton from '../components/toggle-button/ToggleButton';
 import './HomePage.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faExchange } from '@fortawesome/free-solid-svg-icons';
+import { faCheckSquare, faExchange, fas } from '@fortawesome/free-solid-svg-icons';
 import AsideMenu from '../components/aside-menu/AsideMenu';
+import Checkbox from '../components/checkbox/Checkbox';
 
 const HomePage = () => {
   const [primaryColorInputValue, setPrimaryColorInputValue] = useState('black')
@@ -36,11 +37,11 @@ const HomePage = () => {
     setSecondaryColorInputValue(primaryColorInputValue)
   }
 
-  const toggleshowActiveBorder = (e: ChangeEvent<HTMLInputElement>) => {
+  const toggleShowActiveBorder = () => {
     setshowActiveBorderCheckboxValue(!showActiveBorderCheckboxValue)
   }
 
-  const toggleshowPassiveBorder = (e: ChangeEvent<HTMLInputElement>) => {
+  const toggleShowPassiveBorder = () => {
     setShowPassiveBorderCheckboxValue(!showPassiveBorderCheckboxValue)
   }
 
@@ -60,14 +61,8 @@ const HomePage = () => {
             <label htmlFor="swap-colors-icon" className='swap-colors-label'>Swap Colors</label>
             <FontAwesomeIcon id='swap-colors-icon' icon={faExchange} transform={{ rotate: 90 }} />
           </div>
-          <div className="toggle-border-wrapper">
-            <input type="checkbox" id='show-active-border-checkbox' checked={showActiveBorderCheckboxValue} onChange={toggleshowActiveBorder} />
-            <label htmlFor="show-active-border-checkbox">Show Active Border</label>
-          </div>
-          <div className="toggle-border-wrapper">
-            <input type="checkbox" id='show-passive-border-checkbox' checked={showPassiveBorderCheckboxValue} onChange={toggleshowPassiveBorder} />
-            <label htmlFor="show-passive-border-checkbox">Show Passive Border</label>
-          </div>
+          <Checkbox checked={showActiveBorderCheckboxValue} onToggle={toggleShowActiveBorder} label='Show Active Checkbox' />
+          <Checkbox checked={showPassiveBorderCheckboxValue} onToggle={toggleShowPassiveBorder} label='Show Passive Border' />
           <button className='submit-new-colors-button' type='button' onClick={showChanges}>Show Changes</button>
         </div>
       </AsideMenu>
