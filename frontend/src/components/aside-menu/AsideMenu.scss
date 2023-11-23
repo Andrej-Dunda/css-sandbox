@@ -1,21 +1,20 @@
 .aside-menu {
-
-  width: 350px;
+  width: 300px;
   height: 100%;
 
-  display: grid;
-  grid-template-columns: 300px 50px;
+  position: relative;
 
   transition: all var(--aside-menu-transition-duration);
 
   .aside-main {
     transition: all var(--aside-menu-transition-duration);
 
-    border-right: 1px solid grey;
+    border-right: 1px solid #202020;
 
     overflow: hidden;
 
     width: 300px;
+    height: 100%;
 
     box-shadow: 1px 1px 16px 5px rgba(0, 0, 0, 0.31);
     -webkit-box-shadow: 1px 1px 16px 5px rgba(0, 0, 0, 0.31);
@@ -37,6 +36,11 @@
   }
 
   .aside-aside {
+    position: absolute;
+
+    top: 0;
+    left: 100%;
+
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -46,18 +50,23 @@
 
     width: 50px;
 
+    border-bottom-right-radius: 8px;
+    border-bottom: 1px solid white;
+    border-right: 1px solid white;
+
+    overflow: hidden;
+
+    box-shadow: 1px 1px 16px 5px rgba(0, 0, 0, 0.31);
+    -webkit-box-shadow: 1px 1px 16px 5px rgba(0, 0, 0, 0.31);
+    -moz-box-shadow: 1px 1px 16px 5px rgba(0, 0, 0, 0.31);
+
     .toggle-side-menu-button {
       border: none;
-      border-bottom-right-radius: 8px;
       
       background-color: black;
 
       height: 50px;
       width: 50px;
-
-      box-shadow: 1px 1px 16px 5px rgba(0, 0, 0, 0.31);
-      -webkit-box-shadow: 1px 1px 16px 5px rgba(0, 0, 0, 0.31);
-      -moz-box-shadow: 1px 1px 16px 5px rgba(0, 0, 0, 0.31);
 
       .toggle-side-menu-icon {
         height: 24px;
@@ -68,17 +77,18 @@
   }
 
   &.open {
-    grid-template-columns: 0 50px;
-    width: 50px;
+    width: 0;
 
     .aside-main {
       width: 0;
+      border: none;
     }
 
     .aside-aside {
+      border-bottom: 1px solid black;
+      border-right: 1px solid black;
+
       .toggle-side-menu-button {
-        border-bottom: 1px solid black;
-        border-right: 1px solid black;
         background-color: white;
 
         .toggle-side-menu-icon {

@@ -56,7 +56,7 @@ const HomePage = () => {
   }
 
   return (
-    <div className={`homepage page-container ${isAsideMenuOpen && 'aside-menu-open'}`}>
+    <div className={`homepage page-container ${isAsideMenuOpen ? 'aside-menu-open' : ''}`}>
       <AsideMenu isAsideMenuOpen={isAsideMenuOpen} setIsAsideMenuOpen={setIsAsideMenuOpen}>
         <div className="change-inputs">
           <AsideMenuInput label='Primary Color:' value={primaryColorInputValue} onChange={handlePrimaryColorInputValueChange} />
@@ -67,7 +67,7 @@ const HomePage = () => {
           </div>
           <AsideMenuInput value={backgroundColorInputValue} onChange={handleBackgroundColorInputValueChange} label='Background Color:' />
           <div className="show-borders-wrapper">
-            <Checkbox checked={showActiveBorderCheckboxValue} onToggle={toggleShowActiveBorder} label='Show Active Checkbox' />
+            <Checkbox checked={showActiveBorderCheckboxValue} onToggle={toggleShowActiveBorder} label='Show Active Border' />
             <Checkbox checked={showPassiveBorderCheckboxValue} onToggle={toggleShowPassiveBorder} label='Show Passive Border' />
           </div>
           <ShowChangesButton label='Show Changes' onClick={showChanges} />
