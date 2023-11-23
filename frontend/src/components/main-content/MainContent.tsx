@@ -2,13 +2,13 @@ import { ReactNode } from 'react';
 import './MainContent.scss'
 import validateColor from "validate-color";
 
-interface iMainContent {
+interface MainContentProps {
   className?: string;
   children: ReactNode
   backgroundColor?: string;
 }
 
-const MainContent = ({ className, children, backgroundColor }: iMainContent) => {
+const MainContent = ({ className, children, backgroundColor }: MainContentProps) => {
   return (
     <main
       className={`main-content ${className}`}

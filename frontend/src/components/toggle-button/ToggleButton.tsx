@@ -2,7 +2,7 @@ import './ToggleButton.scss'
 import { useState, useEffect, useRef } from 'react';
 import validateColor from "validate-color";
 
-interface iToggleButton {
+interface ToggleButtonProps {
   primaryColor: string;
   secondaryColor: string;
   className?: string;
@@ -11,7 +11,7 @@ interface iToggleButton {
   showPassiveBorder: boolean;
 }
 
-const ToggleButton = ({primaryColor, secondaryColor, className, buttonType, showActiveBorder, showPassiveBorder}: iToggleButton) => {
+const ToggleButton = ({primaryColor, secondaryColor, className, buttonType, showActiveBorder, showPassiveBorder}: ToggleButtonProps) => {
   const [toggleActive, setToggleActive] = useState(false)
   const toggleButtonRef = useRef<HTMLButtonElement>(null)
 

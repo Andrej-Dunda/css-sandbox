@@ -3,14 +3,14 @@ import './Checkbox.scss'
 import { faCheckSquare } from '@fortawesome/free-solid-svg-icons';
 import { MouseEventHandler } from 'react';
 
-interface iCheckbox {
+interface CheckboxProps {
   checked: boolean;
   onToggle: MouseEventHandler<any>;
   className?: string;
   label?: string;
 }
 
-const Checkbox = ({ checked, onToggle, className, label }: iCheckbox) => {
+const Checkbox = ({ checked, onToggle, className, label }: CheckboxProps) => {
   return (
     <div id='checkbox' className={`checkbox ${className}`} onClick={onToggle}>
       <div className="checkbox-icon-wrapper">

@@ -1,11 +1,11 @@
 import './ErrorMessage.scss'
 
-interface iErrorMessage {
+interface ErrorMessageProps {
   className?: string;
   errorMessage: string;
 }
 
-const ErrorMessage = ({ errorMessage, className }: iErrorMessage) => {
+const ErrorMessage = ({ errorMessage, className }: ErrorMessageProps) => {
   return (
     <span className={`error-message ${errorMessage && 'active'} ${className}`}>{errorMessage}</span>
   )
