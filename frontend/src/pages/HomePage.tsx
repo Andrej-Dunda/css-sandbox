@@ -9,6 +9,7 @@ import ShowChangesButton from '../components/show-changes-button/ShowChangesButt
 import AsideMenuInput from '../components/aside-menu-input/AsideMenuInput';
 import MainContent from '../components/main-content/MainContent';
 import validateColor from "validate-color";
+import Snackbar from '../components/snack-bar/SnackBar';
 
 const HomePage = () => {
   const [primaryColorInputValue, setPrimaryColorInputValue] = useState('white')
@@ -25,6 +26,8 @@ const HomePage = () => {
   const [primaryColorErroMessage, setPrimaryColorErrorMessage] = useState<string>('')
   const [secondarColorErroMessage, setSecondarColorErrorMessage] = useState<string>('')
   const [backgroundColorErroMessage, setBackgroundColorErrorMessage] = useState<string>('')
+  const [showSnackbar, setShowSnackbar] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState<string>('')
 
   const handlePrimaryColorInputValueChange = (e: ChangeEvent<HTMLInputElement>) => {
     setPrimaryColorInputValue(e.target.value)
@@ -49,6 +52,8 @@ const HomePage = () => {
 
     setShowActiveBorder(showActiveBorderCheckboxValue)
     setShowPassiveBorder(showPassiveBorderCheckboxValue)
+
+    showSnackbarMessage('Setting updated!')
   }
 
   const swapColor = () => {
@@ -62,6 +67,15 @@ const HomePage = () => {
 
   const toggleShowPassiveBorder = () => {
     setShowPassiveBorderCheckboxValue(!showPassiveBorderCheckboxValue)
+  }
+
+  const handleCloseSnackbar = () => {
+    setShowSnackbar(false);
+  };
+
+  const showSnackbarMessage = (message: string) => {
+    setShowSnackbar(true)
+    setSnackbarMessage(message)
   }
 
   return (
@@ -88,6 +102,12 @@ const HomePage = () => {
         <ToggleButton primaryColor={primaryColor} secondaryColor={secondaryColor} buttonType='expand expand-x' showActiveBorder={showActiveBorder} showPassiveBorder={showPassiveBorder} />
         <ToggleButton primaryColor={primaryColor} secondaryColor={secondaryColor} buttonType='fade' showActiveBorder={showActiveBorder} showPassiveBorder={showPassiveBorder} />
       </MainContent>
+      <Snackbar
+        message={snackbarMessage}
+        onClose={handleCloseSnackbar}
+        showSnackbar={showSnackbar}
+        setShowSnackbar={setShowSnackbar}
+      />
     </div>
   )
 }
