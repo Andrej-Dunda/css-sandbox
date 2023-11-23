@@ -9,7 +9,10 @@
   width: 300px;
   height: 100px;
 
-  border: 1px solid var(--toggle-secondary);
+  min-width: 300px;
+  min-height: 100px;
+
+  border: none;
   border-radius: 8px;
 
   background-color: var(--toggle-primary);
@@ -21,12 +24,6 @@
 
   transition: all var(--toggle-transition-time);
 
-  color: var(--toggle-secondary);
-
-  &.toggle-active {
-    color: var(--toggle-primary);
-  }
-
   .button-text {
     position: absolute;
 
@@ -35,7 +32,11 @@
 
     transform: translateY(-50%) translateX(-50%);
 
-    z-index: 100;
+    color: var(--toggle-secondary);
+
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
   }
 
   .background-color-div {
@@ -44,28 +45,68 @@
 
     transition: all var(--toggle-transition-time);
 
-    z-index: 0;
-
-    width: 0;
-    height: 0;
-
-    top: 50%;
-    left: 50%;
-
-    transform: translateY(-50%) translateX(-50%);
-
     background-color: var(--toggle-secondary);
     border-radius: 6px;
 
     box-shadow: none;
 
-    &.toggle-active {
+    transform: translateY(-50%) translateX(-50%);
+
+    top: 50%;
+    left: 50%;
+
+    &.expand {
+      &.expand-xy {
+        width: 0;
+        height: 0;
+      }
+
+      &.expand-x {
+        width: 0;
+        height: 100%;
+      }
+
+      &.expand-y {
+        width: 100%;
+        height: 0;
+      }
+    }
+
+    &.fade {
       width: 100%;
       height: 100%;
+      opacity: 0;
+    }
+  }
 
+  &.toggle-active {
+    .button-text {
+      color: var(--toggle-primary);
+    }
+
+    .background-color-div {
       box-shadow: 1px 1px 23px 8px var(--toggle-secondary);
       -webkit-box-shadow: 1px 1px 23px 8px var(--toggle-secondary);
       -moz-box-shadow: 1px 1px 23px 8px var(--toggle-secondary);
+
+      &.expand {
+        width: 100%!important;
+        height: 100%!important;
+      }
+
+      &.fade {
+        opacity: 1;
+      }
     }
+  }
+
+  &.show-active-border {
+    .background-color-div {
+        border: 1px solid var(--toggle-primary);
+    }
+  }
+
+  &.show-passive-border {
+    border: 1px solid var(--toggle-secondary)!important;
   }
 }

@@ -5,6 +5,8 @@
   display: grid;
   grid-template-rows: 54px 1fr;
 
+  overflow: hidden;
+
   .page-container {
     display: grid;
     grid-template-columns: 350px 1fr;

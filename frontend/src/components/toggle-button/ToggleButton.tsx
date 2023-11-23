@@ -4,9 +4,13 @@ import { useState, useEffect, useRef } from 'react';
 interface iToggleButton {
   primaryColor: string;
   secondaryColor: string;
+  className?: string;
+  buttonType: string;
+  showActiveBorder: boolean;
+  showPassiveBorder: boolean;
 }
 
-const ToggleButton = ({primaryColor, secondaryColor}: iToggleButton) => {
+const ToggleButton = ({primaryColor, secondaryColor, className, buttonType, showActiveBorder, showPassiveBorder}: iToggleButton) => {
   const [toggleActive, setToggleActive] = useState(false)
   const toggleButtonRef = useRef<HTMLButtonElement>(null)
 
@@ -29,11 +33,11 @@ const ToggleButton = ({primaryColor, secondaryColor}: iToggleButton) => {
 
   return (
     <button
-      className={`toggle-button ${toggleActive && 'toggle-active'}`}
+      className={`toggle-button ${toggleActive && 'toggle-active'} ${className} ${showActiveBorder ? 'show-active-border' : ''} ${showPassiveBorder ? 'show-passive-border' : ''}`}
       onClick={handleToggleButtonClick}
       ref={toggleButtonRef}
     >
-      <div className={`background-color-div ${toggleActive && 'toggle-active'}`}></div>
+      <div className={`background-color-div ${buttonType}`}></div>
       <span className="button-text">Toggle Button</span>
     </button>
   )

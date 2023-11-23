@@ -6,31 +6,31 @@
   display: grid;
   grid-template-columns: 300px 50px;
 
-  box-shadow: 1px 1px 16px 5px rgba(0, 0, 0, 0.31);
-  -webkit-box-shadow: 1px 1px 16px 5px rgba(0, 0, 0, 0.31);
-  -moz-box-shadow: 1px 1px 16px 5px rgba(0, 0, 0, 0.31);
-
   transition: all var(--aside-menu-transition-duration);
 
   .aside-main {
-      transition: all var(--aside-menu-transition-duration);
+    transition: all var(--aside-menu-transition-duration);
 
-      border-right: 1px solid grey;
+    border-right: 1px solid grey;
 
-      overflow: hidden;
+    overflow: hidden;
 
-      width: 300px;
+    width: 300px;
+
+    box-shadow: 1px 1px 16px 5px rgba(0, 0, 0, 0.31);
+    -webkit-box-shadow: 1px 1px 16px 5px rgba(0, 0, 0, 0.31);
+    -moz-box-shadow: 1px 1px 16px 5px rgba(0, 0, 0, 0.31);
 
     .aside-main-container {
       display: flex;
       flex-direction: column;
       gap: 32px;
-  
+
       width: 300px;
-  
+
       justify-content: flex-start;
       align-items: center;
-  
+
       padding: 16px;
 
     }
@@ -48,10 +48,16 @@
 
     .toggle-side-menu-button {
       border: none;
+      border-bottom-right-radius: 8px;
+      
       background-color: black;
 
       height: 50px;
       width: 50px;
+
+      box-shadow: 1px 1px 16px 5px rgba(0, 0, 0, 0.31);
+      -webkit-box-shadow: 1px 1px 16px 5px rgba(0, 0, 0, 0.31);
+      -moz-box-shadow: 1px 1px 16px 5px rgba(0, 0, 0, 0.31);
 
       .toggle-side-menu-icon {
         height: 24px;
@@ -72,6 +78,7 @@
     .aside-aside {
       .toggle-side-menu-button {
         border-bottom: 1px solid black;
+        border-right: 1px solid black;
         background-color: white;
 
         .toggle-side-menu-icon {

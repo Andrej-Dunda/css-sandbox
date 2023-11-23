@@ -11,6 +11,10 @@ const HomePage = () => {
   const [primaryColor, setPrimaryColor] = useState('')
   const [secondaryColor, setSecondaryColor] = useState('')
   const [isAsideMenuOpen, setIsAsideMenuOpen] = useState<boolean>(true)
+  const [showActiveBorderCheckboxValue, setshowActiveBorderCheckboxValue] = useState<boolean>(false)
+  const [showActiveBorder, setShowActiveBorder] = useState<boolean>(false)
+  const [showPassiveBorderCheckboxValue, setShowPassiveBorderCheckboxValue] = useState<boolean>(false)
+  const [showPassiveBorder, setShowPassiveBorder] = useState<boolean>(false)
 
   const handlePrimaryColorInputValueChange = (e: ChangeEvent<HTMLInputElement>) => {
     setPrimaryColorInputValue(e.target.value)
@@ -20,9 +24,11 @@ const HomePage = () => {
     setSecondaryColorInputValue(e.target.value)
   }
 
-  const submitNewToggleButtonColors = () => {
+  const showChanges = () => {
     setPrimaryColor(primaryColorInputValue)
     setSecondaryColor(secondaryColorInputValue)
+    setShowActiveBorder(showActiveBorderCheckboxValue)
+    setShowPassiveBorder(showPassiveBorderCheckboxValue)
   }
 
   const swapColor = () => {
@@ -30,10 +36,18 @@ const HomePage = () => {
     setSecondaryColorInputValue(primaryColorInputValue)
   }
 
+  const toggleshowActiveBorder = (e: ChangeEvent<HTMLInputElement>) => {
+    setshowActiveBorderCheckboxValue(!showActiveBorderCheckboxValue)
+  }
+
+  const toggleshowPassiveBorder = (e: ChangeEvent<HTMLInputElement>) => {
+    setShowPassiveBorderCheckboxValue(!showPassiveBorderCheckboxValue)
+  }
+
   return (
     <div className={`homepage page-container ${isAsideMenuOpen && 'aside-menu-open'}`}>
       <AsideMenu isAsideMenuOpen={isAsideMenuOpen} setIsAsideMenuOpen={setIsAsideMenuOpen}>
-        <div className="color-inputs">
+        <div className="change-inputs">
           <div className="color-input-wrapper">
             <label htmlFor="primaryColorInput">Primary Color:</label>
             <input id='primaryColorInput' className='color-input' type="text" value={primaryColorInputValue} onChange={handlePrimaryColorInputValueChange} />
@@ -46,11 +60,22 @@ const HomePage = () => {
             <label htmlFor="swap-colors-icon" className='swap-colors-label'>Swap Colors</label>
             <FontAwesomeIcon id='swap-colors-icon' icon={faExchange} transform={{ rotate: 90 }} />
           </div>
-          <button className='submit-new-colors-button' type='button' onClick={submitNewToggleButtonColors}>Change Colors</button>
+          <div className="toggle-border-wrapper">
+            <input type="checkbox" id='show-active-border-checkbox' checked={showActiveBorderCheckboxValue} onChange={toggleshowActiveBorder} />
+            <label htmlFor="show-active-border-checkbox">Show Active Border</label>
+          </div>
+          <div className="toggle-border-wrapper">
+            <input type="checkbox" id='show-passive-border-checkbox' checked={showPassiveBorderCheckboxValue} onChange={toggleshowPassiveBorder} />
+            <label htmlFor="show-passive-border-checkbox">Show Passive Border</label>
+          </div>
+          <button className='submit-new-colors-button' type='button' onClick={showChanges}>Show Changes</button>
         </div>
       </AsideMenu>
       <main className="main-content">
-        <ToggleButton primaryColor={primaryColor} secondaryColor={secondaryColor} />
+        <ToggleButton primaryColor={primaryColor} secondaryColor={secondaryColor} buttonType='expand expand-xy' showActiveBorder={showActiveBorder} showPassiveBorder={showPassiveBorder} />
+        <ToggleButton primaryColor={primaryColor} secondaryColor={secondaryColor} buttonType='expand expand-y' showActiveBorder={showActiveBorder} showPassiveBorder={showPassiveBorder} />
+        <ToggleButton primaryColor={primaryColor} secondaryColor={secondaryColor} buttonType='expand expand-x' showActiveBorder={showActiveBorder} showPassiveBorder={showPassiveBorder} />
+        <ToggleButton primaryColor={primaryColor} secondaryColor={secondaryColor} buttonType='fade' showActiveBorder={showActiveBorder} showPassiveBorder={showPassiveBorder} />
       </main>
     </div>
   )
