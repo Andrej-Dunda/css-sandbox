@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import './MainContent.scss'
+import validateColor from "validate-color";
 
 interface iMainContent {
   className?: string;
@@ -9,7 +10,10 @@ interface iMainContent {
 
 const MainContent = ({ className, children, backgroundColor }: iMainContent) => {
   return (
-    <main className={`main-content ${className}`} style={{backgroundColor: backgroundColor ? backgroundColor : 'white'}} >
+    <main
+      className={`main-content ${className}`}
+      style={{backgroundColor: backgroundColor && validateColor(backgroundColor) ? backgroundColor : 'transparent'}}
+    >
       {children}
     </main>
   )

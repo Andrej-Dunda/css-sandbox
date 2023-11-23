@@ -8,19 +8,23 @@ import Checkbox from '../components/checkbox/Checkbox';
 import ShowChangesButton from '../components/show-changes-button/ShowChangesButton';
 import AsideMenuInput from '../components/aside-menu-input/AsideMenuInput';
 import MainContent from '../components/main-content/MainContent';
+import validateColor from "validate-color";
 
 const HomePage = () => {
-  const [primaryColorInputValue, setPrimaryColorInputValue] = useState('black')
-  const [secondaryColorInputValue, setSecondaryColorInputValue] = useState('white')
-  const [primaryColor, setPrimaryColor] = useState('')
-  const [secondaryColor, setSecondaryColor] = useState('')
-  const [backgroundColorInputValue, setBackgroundColorInputValueChange] = useState('')
-  const [backgroundColor, setBackgroundColor] = useState('')
+  const [primaryColorInputValue, setPrimaryColorInputValue] = useState('white')
+  const [primaryColor, setPrimaryColor] = useState('white')
+  const [secondaryColorInputValue, setSecondaryColorInputValue] = useState('black')
+  const [secondaryColor, setSecondaryColor] = useState('black')
+  const [backgroundColorInputValue, setBackgroundColorInputValueChange] = useState('white')
+  const [backgroundColor, setBackgroundColor] = useState('white')
   const [isAsideMenuOpen, setIsAsideMenuOpen] = useState<boolean>(true)
   const [showActiveBorderCheckboxValue, setshowActiveBorderCheckboxValue] = useState<boolean>(false)
   const [showActiveBorder, setShowActiveBorder] = useState<boolean>(false)
   const [showPassiveBorderCheckboxValue, setShowPassiveBorderCheckboxValue] = useState<boolean>(true)
   const [showPassiveBorder, setShowPassiveBorder] = useState<boolean>(true)
+  const [primaryColorErroMessage, setPrimaryColorErrorMessage] = useState<string>('')
+  const [secondarColorErroMessage, setSecondarColorErrorMessage] = useState<string>('')
+  const [backgroundColorErroMessage, setBackgroundColorErrorMessage] = useState<string>('')
 
   const handlePrimaryColorInputValueChange = (e: ChangeEvent<HTMLInputElement>) => {
     setPrimaryColorInputValue(e.target.value)
@@ -35,11 +39,16 @@ const HomePage = () => {
   }
 
   const showChanges = () => {
-    setPrimaryColor(primaryColorInputValue)
-    setSecondaryColor(secondaryColorInputValue)
+    setPrimaryColorErrorMessage('')
+    setSecondarColorErrorMessage('')
+    setBackgroundColorErrorMessage('')
+
+    validateColor(primaryColorInputValue) ? setPrimaryColor(primaryColorInputValue) : setPrimaryColorErrorMessage('Invalid primary color format!')
+    validateColor(secondaryColorInputValue) ? setSecondaryColor(secondaryColorInputValue) : setSecondarColorErrorMessage('Invalid secondary color format!')
+    validateColor(backgroundColorInputValue) ? setBackgroundColor(backgroundColorInputValue) : setBackgroundColorErrorMessage('Invalid background color format!')
+
     setShowActiveBorder(showActiveBorderCheckboxValue)
     setShowPassiveBorder(showPassiveBorderCheckboxValue)
-    setBackgroundColor(backgroundColorInputValue)
   }
 
   const swapColor = () => {
@@ -59,13 +68,13 @@ const HomePage = () => {
     <div className={`homepage page-container ${isAsideMenuOpen ? 'aside-menu-open' : ''}`}>
       <AsideMenu isAsideMenuOpen={isAsideMenuOpen} setIsAsideMenuOpen={setIsAsideMenuOpen}>
         <div className="change-inputs">
-          <AsideMenuInput label='Primary Color:' value={primaryColorInputValue} onChange={handlePrimaryColorInputValueChange} />
-          <AsideMenuInput label='Secondary Color:' value={secondaryColorInputValue} onChange={handleSecondaryColorInputValueChange} />
+          <AsideMenuInput label='Primary Color:' value={primaryColorInputValue} onChange={handlePrimaryColorInputValueChange} errorMessage={primaryColorErroMessage} />
+          <AsideMenuInput label='Secondary Color:' value={secondaryColorInputValue} onChange={handleSecondaryColorInputValueChange} errorMessage={secondarColorErroMessage} />
           <div className="swap-colors-wrapper" onClick={swapColor}>
             <label htmlFor="swap-colors-icon" className='swap-colors-label'>Swap Colors</label>
             <FontAwesomeIcon id='swap-colors-icon' icon={faExchange} transform={{ rotate: 90 }} />
           </div>
-          <AsideMenuInput value={backgroundColorInputValue} onChange={handleBackgroundColorInputValueChange} label='Background Color:' />
+          <AsideMenuInput value={backgroundColorInputValue} onChange={handleBackgroundColorInputValueChange} label='Background Color:' errorMessage={backgroundColorErroMessage} />
           <div className="show-borders-wrapper">
             <Checkbox checked={showActiveBorderCheckboxValue} onToggle={toggleShowActiveBorder} label='Show Active Border' />
             <Checkbox checked={showPassiveBorderCheckboxValue} onToggle={toggleShowPassiveBorder} label='Show Passive Border' />
