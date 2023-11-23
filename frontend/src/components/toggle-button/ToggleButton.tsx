@@ -17,8 +17,6 @@ const ToggleButton = ({primaryColor, secondaryColor, className, buttonType, show
   useEffect(() => {
     isValidColor(primaryColor) && toggleButtonRef.current && toggleButtonRef.current.style.setProperty('--toggle-primary', primaryColor)
     isValidColor(secondaryColor) && toggleButtonRef.current && toggleButtonRef.current.style.setProperty('--toggle-secondary', secondaryColor)
-    if (!isValidColor(primaryColor)) console.log(`${primaryColor} is not a valid color!`)
-    if (!isValidColor(secondaryColor)) console.log(`${secondaryColor} is not a valid color!`)
   }, [primaryColor, secondaryColor])
 
   const isValidColor = (color: string): boolean => {

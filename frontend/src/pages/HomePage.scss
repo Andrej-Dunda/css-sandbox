@@ -72,33 +72,14 @@
       }
     }
 
-    .toggle-border-wrapper {
+    .show-borders-wrapper {
       display: flex;
-      flex-direction: row;
-      justify-content: flex-start;
-      align-items: center;
-      gap: 4px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
 
       width: 100%;
-      padding-left: 50px;
-    }
-
-    .submit-new-colors-button {
-      background-color: black;
-      border: none;
-      border-radius: 8px;
-      padding: 16px;
-      font-weight: 600;
-      color: white;
-      font-size: 16px;
-      width: 100%;
-
-      &:hover {
-        background-color: #202020;
-        box-shadow: 0px 0px 11px -4px rgba(0, 0, 0, 0.75);
-        -webkit-box-shadow: 0px 0px 11px -4px rgba(0, 0, 0, 0.75);
-        -moz-box-shadow: 0px 0px 11px -4px rgba(0, 0, 0, 0.75);
-      }
+      padding-left: 40px;
     }
   }
 }
