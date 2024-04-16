@@ -9,9 +9,10 @@ interface ToggleButtonProps {
   buttonType: string;
   showActiveBorder: boolean;
   showPassiveBorder: boolean;
+  rotate?: boolean;
 }
 
-const ToggleButton = ({primaryColor, secondaryColor, className, buttonType, showActiveBorder, showPassiveBorder}: ToggleButtonProps) => {
+const ToggleButton = ({ primaryColor, secondaryColor, className, buttonType, showActiveBorder, showPassiveBorder, rotate = false }: ToggleButtonProps) => {
   const [toggleActive, setToggleActive] = useState(false)
   const toggleButtonRef = useRef<HTMLButtonElement>(null)
 
@@ -26,7 +27,7 @@ const ToggleButton = ({primaryColor, secondaryColor, className, buttonType, show
 
   return (
     <button
-      className={`toggle-button ${toggleActive && 'toggle-active'} ${className} ${showActiveBorder ? 'show-active-border' : ''} ${showPassiveBorder ? 'show-passive-border' : ''}`}
+      className={`toggle-button ${toggleActive ? 'toggle-active' : ''} ${rotate ? 'rotate' : ''} ${className ? className : ''} ${showActiveBorder ? 'show-active-border' : ''} ${showPassiveBorder ? 'show-passive-border' : ''} ${buttonType === 'slide rotate-45' ? 'shadow-box' : ''}`}
       onClick={handleToggleButtonClick}
       ref={toggleButtonRef}
     >

@@ -1,0 +1,26 @@
+.mirror-element-window {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+
+  .mirrored-button {
+    height: 50px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+    border-radius: 16px;
+
+    overflow: hidden;
+    text-align: justify;
+    padding: 16px;
+
+    box-shadow: 0px 0px 11px -4px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 0px 11px -4px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 11px -4px rgba(0,0,0,0.75);
+  }
+}

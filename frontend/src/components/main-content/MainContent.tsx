@@ -11,7 +11,7 @@ interface MainContentProps {
 const MainContent = ({ className, children, backgroundColor }: MainContentProps) => {
   return (
     <main
-      className={`main-content ${className}`}
+      className={`main-content ${className ? className : ''}`}
       style={{backgroundColor: backgroundColor && validateColor(backgroundColor) ? backgroundColor : 'transparent'}}
     >
       {children}
